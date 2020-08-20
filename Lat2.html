@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Binding</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{greet('Nisrina Izdihar')}}</p>
+      <img v-bind:src="gambar">
+      <br>
+      <a v-bind:href="url">SMK Telkom Malang</a>
+    </div>
+    <script>
+      var app = new Vue({
+        el : "#app",
+        methods : {
+          greet : function(name){
+            return 'Good Morning, ' + name;
+          }
+        },
+        data : {
+          gambar : "https://www.fullstackpython.com/img/logos/vuejs-wide.png",
+          url : "https://smktelkom-mlg.sch.id/"
+        }
+      });
+    </script>
+  </body>
+</html>

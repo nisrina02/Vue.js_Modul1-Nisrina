@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Handling</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="pesan">Tampil Pesan</button>
+      <h3>Masukkan Nama Guru</h3>
+      <form v-on:submit.prevent>
+        <input type="text" name="namaSiswa" id="namaSiswa" v-on:keyup.enter="simpan" v-model="guru">
+        <button type="button" v-on:click="simpan">Simpan</button>
+      </form>
+      <br> <br>
+      <table border="1" style="border-collapse: collapse" v-if="dataGuru.length > 0">
+        <tr>
+          <thead>
+            <th style="width: 30px">No</th>
+            <th style="width: 200px">Nama Guru</th>
+          </thead>
+        </tr>
+        <tr>
+          <tbody v-for="(guru, index) in dataGuru" :key="index">
+            <td>{{index+1}}</td>
+            <td>{{guru}}</td>
+          </tbody>
+        </tr>
+      </table>
+      <h4 v-else>Tidak Ada Data</h4>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el : "#app",
+        methods : {
+          pesan : function() {
+            alert("Selamat Belajar Vue.js");
+          },
+            simpan : function(){
+              this.dataGuru.push(this.guru);
+              this.guru = "";
+          }
+        },
+        data : {
+          'dataGuru' : [
+            //{"nama" : "Arya", "kelas" : "X RPL 1"},
+            //{"nama" : "Bella", "kelas" : "X RPL 2"},
+            //{"nama" : "Cintya", "kelas" : "XI RPL 1"},
+            //{"nama" : "Doni", "kelas" : "XI RPL 2"},
+            //{"nama" : "Elma", "kelas" : "XII RPL 1"},
+            //{"nama" : "Farhan", "kelas" : "XII RPL 2"},
+          ],
+          'guru' : ""
+        }
+      });
+    </script>
+  </body>
+</html>
